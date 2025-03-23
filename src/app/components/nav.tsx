@@ -15,7 +15,7 @@ export default function Nav() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
-    
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -49,15 +49,17 @@ export default function Nav() {
           <Link href="#faq" className="text-sm font-medium hover:text-primary">
             FAQ
           </Link>
-          
+
           <div className="flex items-center space-x-3">
             <ModeToggle />
-            <Button variant="outline" size="sm">
-              Log In
-            </Button>
+            <Link href="/login">
+              <Button variant="outline" size="sm">
+                Log In
+              </Button>
+            </Link>
             <Link href="/early-access">
-              <Button 
-                size="sm" 
+              <Button
+                size="sm"
                 className="bg-primary relative overflow-hidden group"
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-purple-500 to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
@@ -117,10 +119,12 @@ export default function Nav() {
               FAQ
             </Link>
             <div className="flex flex-col space-y-2 pt-2">
-              <Button variant="outline" size="sm">
-                Log In
-              </Button>
-              <Link href="/early-access" className="w-full">
+              <Link href="/login">
+                <Button variant="outline" size="sm" className="w-full">
+                  Log In
+                </Button>
+              </Link>
+              <Link href="/early-access">
                 <Button size="sm" className="w-full relative overflow-hidden group">
                   <span className="absolute inset-0 bg-gradient-to-r from-purple-500 to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                   <span className="relative flex items-center justify-center">
