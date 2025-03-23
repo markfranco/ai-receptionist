@@ -1,25 +1,38 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import './globals.css';
+import { Inter as FontSans } from 'next/font/google';
+import { cn } from '@/app/lib/utils';
+import { ThemeProvider } from '@/app/components/theme-provider';
 
-const inter = Inter({ subsets: ["latin"] });
+const fontSans = FontSans({
+  subsets: ['latin'],
+  variable: '--font-sans',
+});
 
-export const metadata: Metadata = {
-  title: "Your Virtual Receptionist - 24/7 AI Voice Assistant for Small Business",
-  description: "Never miss a lead again with Your Virtual Receptionist. AI-powered voice assistant that answers calls, books appointments, and captures leads 24/7.",
+export const metadata = {
+  title: 'Your Virtual Receptionist | 24/7 AI Call Answering for Small Business',
+  description: 'Never miss a lead again. Set up a 24/7 AI voice assistant that answers your calls, books clients, and captures every opportunity.',
+  keywords: ['virtual receptionist', 'ai receptionist', 'automated call answering', 'business calls', 'lead capture', 'appointment booking', 'NSW small business'],
 };
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${inter.className} antialiased`}>
-        <main className="min-h-screen bg-white">
+    <html lang="en" suppressHydrationWarning>
+      <body className={cn(
+        'min-h-screen bg-background font-sans antialiased',
+        fontSans.variable
+      )}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          disableTransitionOnChange
+        >
           {children}
-        </main>
+        </ThemeProvider>
       </body>
     </html>
   );

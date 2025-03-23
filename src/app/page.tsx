@@ -1,14 +1,16 @@
-import Hero from '@/components/sections/Hero'
-import HowItWorks from '@/components/sections/HowItWorks'
-import Features from '@/components/sections/Features'
-import Pricing from '@/components/sections/Pricing'
-import Testimonials from '@/components/sections/Testimonials'
-import FAQ from '@/components/sections/FAQ'
-import Footer from '@/components/sections/Footer'
+import Hero from './components/hero';
+import HowItWorks from './components/how-it-works';
+import Features from './components/features';
+import Pricing from './components/pricing';
+import Testimonials from './components/testimonials';
+import FAQ from './components/faq';
+import Footer from './components/footer';
+import Nav from './components/nav';
 
 export default function Home() {
   return (
-    <>
+    <main className="min-h-screen">
+      <Nav />
       <Hero />
       <HowItWorks />
       <Features />
@@ -16,6 +18,6 @@ export default function Home() {
       <Testimonials />
       <FAQ />
       <Footer />
-    </>
-  )
+    </main>
+  );
 }
