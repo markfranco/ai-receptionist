@@ -2,19 +2,52 @@
 
 import { motion } from "framer-motion";
 import { 
+  Phone, 
+  MessageSquare, 
+  Database, 
+  Calendar, 
+  MessagesSquare,
   BadgeCheck,
   Clock,
-  UserPlus,
-  Phone,
-  MessageSquare,
-  Database,
-  Calendar,
-  MessagesSquare,
+  UserPlus
 } from "lucide-react";
-import Image from "next/image";
 import { Button } from "./ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
-import { FEATURES, BUSINESS_TYPES } from "@/constants";
+import Link from "next/link";
+
+const features = [
+  {
+    title: "24/7 Voice Answering",
+    description: "Never miss a call again. Your AI receptionist answers calls professionally any time of day or night.",
+    icon: Phone,
+  },
+  {
+    title: "Call Recording + Transcripts",
+    description: "Every call is recorded and transcribed, giving you perfect records and actionable insights.",
+    icon: MessageSquare,
+  },
+  {
+    title: "Firestore Lead Database",
+    description: "Automatically capture and store lead information in a secure database you can access anytime.",
+    icon: Database,
+  },
+  {
+    title: "Booking + Calendar Sync",
+    description: "Let callers book appointments directly into your calendar with seamless integration.",
+    icon: Calendar,
+  },
+  {
+    title: "Optional CRM & SMS Follow-ups",
+    description: "Automatically enter leads into your CRM and send follow-up SMS messages to boost conversions.",
+    icon: MessagesSquare,
+  },
+];
+
+const businessTypes = [
+  { id: "real-estate", label: "Real Estate", icon: "🏠" },
+  { id: "fitness", label: "Fitness Coach", icon: "💪" },
+  { id: "health", label: "Allied Health", icon: "🩺" },
+];
 
 export default function Features() {
   return (
@@ -37,7 +70,7 @@ export default function Features() {
 
         {/* Features grid */}
         <div className="grid md:grid-cols-3 gap-8 mb-16">
-          {FEATURES.map((feature, index) => (
+          {features.map((feature, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
@@ -73,7 +106,7 @@ export default function Features() {
 
           <Tabs defaultValue="real-estate" className="w-full">
             <TabsList className="grid grid-cols-3 w-full max-w-md mx-auto mb-8">
-              {BUSINESS_TYPES.map((type) => (
+              {businessTypes.map((type) => (
                 <TabsTrigger key={type.id} value={type.id} className="flex items-center">
                   <span className="mr-2">{type.icon}</span>
                   <span>{type.label}</span>
@@ -85,15 +118,13 @@ export default function Features() {
             <TabsContent value="real-estate" className="mt-4">
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 <div className="bg-muted rounded-lg overflow-hidden shadow-md">
-                  <div className="aspect-video relative">
-                    <Image 
-                      src="/images/real-estate.jpg" 
-                      alt="Real estate agent helping a client" 
-                      fill
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      className="object-cover"
-                      priority
-                    />
+                  <div className="aspect-video relative bg-gray-800">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="relative w-full h-full">
+                        <div className="absolute inset-0 opacity-60 bg-cover bg-center" 
+                             style={{ backgroundImage: `url('/api/placeholder/600/400')` }} />
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -102,7 +133,7 @@ export default function Features() {
                   <ul className="space-y-3">
                     <li className="flex items-start">
                       <BadgeCheck className="h-5 w-5 text-primary shrink-0 mt-0.5 mr-2" />
-                      <span>Never miss a potential buyer&apos;s call, even during open houses</span>
+                      <span>Never miss a potential buyer's call, even during open houses</span>
                     </li>
                     <li className="flex items-start">
                       <BadgeCheck className="h-5 w-5 text-primary shrink-0 mt-0.5 mr-2" />
@@ -117,7 +148,9 @@ export default function Features() {
                       <span>Send automatic SMS with property details after calls</span>
                     </li>
                   </ul>
-                  <Button className="mt-6">Perfect for My Agency</Button>
+                  <Link href="/early-access">
+                    <Button className="mt-6">Join Early Access</Button>
+                  </Link>
                 </div>
               </div>
             </TabsContent>
@@ -126,14 +159,13 @@ export default function Features() {
             <TabsContent value="fitness" className="mt-4">
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 <div className="bg-muted rounded-lg overflow-hidden shadow-md">
-                  <div className="aspect-video relative">
-                    <Image 
-                      src="/images/fitness-coach.jpg" 
-                      alt="Fitness coach training a client" 
-                      fill
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      className="object-cover"
-                    />
+                  <div className="aspect-video relative bg-gray-800">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="relative w-full h-full">
+                        <div className="absolute inset-0 opacity-60 bg-cover bg-center" 
+                             style={{ backgroundImage: `url('/api/placeholder/600/400')` }} />
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -142,7 +174,7 @@ export default function Features() {
                   <ul className="space-y-3">
                     <li className="flex items-start">
                       <Clock className="h-5 w-5 text-primary shrink-0 mt-0.5 mr-2" />
-                      <span>Answer calls while you&apos;re training clients</span>
+                      <span>Answer calls while you're training clients</span>
                     </li>
                     <li className="flex items-start">
                       <UserPlus className="h-5 w-5 text-primary shrink-0 mt-0.5 mr-2" />
@@ -157,7 +189,9 @@ export default function Features() {
                       <span>Send automatic session reminders and follow-ups</span>
                     </li>
                   </ul>
-                  <Button className="mt-6">Perfect for My Gym</Button>
+                  <Link href="/early-access">
+                    <Button className="mt-6">Join Early Access</Button>
+                  </Link>
                 </div>
               </div>
             </TabsContent>
@@ -166,14 +200,13 @@ export default function Features() {
             <TabsContent value="health" className="mt-4">
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 <div className="bg-muted rounded-lg overflow-hidden shadow-md">
-                  <div className="aspect-video relative">
-                    <Image 
-                      src="/images/health-clinic.jpg" 
-                      alt="Healthcare professional helping a patient" 
-                      fill
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      className="object-cover"
-                    />
+                  <div className="aspect-video relative bg-gray-800">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="relative w-full h-full">
+                        <div className="absolute inset-0 opacity-60 bg-cover bg-center" 
+                             style={{ backgroundImage: `url('/api/placeholder/600/400')` }} />
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -197,7 +230,9 @@ export default function Features() {
                       <span>Reduce no-shows with automatic reminders</span>
                     </li>
                   </ul>
-                  <Button className="mt-6">Perfect for My Clinic</Button>
+                  <Link href="/early-access">
+                    <Button className="mt-6">Join Early Access</Button>
+                  </Link>
                 </div>
               </div>
             </TabsContent>

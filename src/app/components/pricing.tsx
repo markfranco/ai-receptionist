@@ -1,20 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, HelpCircle } from "lucide-react";
+import { Check } from "lucide-react";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "./ui/tooltip";
 import { Badge } from "./ui/badge";
 import { Switch } from "./ui/switch";
 import { Label } from "./ui/label";
 import { useState } from "react";
+import Link from "next/link";
 
 const tiers = [
   {
@@ -111,8 +105,11 @@ export default function Pricing() {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Simple, Transparent Pricing</h2>
+            <div className="inline-flex items-center rounded-full bg-primary/10 border border-primary/20 px-4 py-2 text-sm font-medium text-primary mb-4">
+              Coming Soon — Join our <Link href="/early-access" className="underline mx-1 font-semibold">Early Access</Link> waitlist
+            </div>
             <p className="text-lg text-muted-foreground">
-              Choose the plan that works best for your business needs. All plans come with a 14-day free trial.
+              Choose the plan that works best for your business needs. Early access members receive special pricing.
             </p>
           </motion.div>
 
@@ -191,12 +188,14 @@ export default function Pricing() {
                   </ul>
                 </CardContent>
                 <CardFooter>
-                  <Button 
-                    className="w-full" 
-                    variant={tier.popular ? "default" : "outline"}
-                  >
-                    {tier.cta}
-                  </Button>
+                  <Link href="/early-access" className="w-full">
+                    <Button 
+                      className="w-full" 
+                      variant={tier.popular ? "default" : "outline"}
+                    >
+                      Join Early Access
+                    </Button>
+                  </Link>
                 </CardFooter>
               </Card>
             </motion.div>
@@ -230,9 +229,11 @@ export default function Pricing() {
                     <span className="text-muted-foreground ml-1">one-time</span>
                   </div>
                   <p className="text-sm text-muted-foreground mb-4">{option.description}</p>
-                  <Button variant="outline" size="sm" className="w-full">
-                    {option.price === 0 ? "Start Free Trial" : "Book Setup"}
-                  </Button>
+                  <Link href="/early-access" className="w-full">
+                    <Button variant="outline" size="sm" className="w-full">
+                      Join Early Access
+                    </Button>
+                  </Link>
                 </div>
               ))}
             </div>

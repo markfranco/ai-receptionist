@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import { Button } from "./ui/button";
-import { Phone, Calendar, CheckCircle } from "lucide-react";
+import { Calendar, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function Hero() {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
@@ -36,10 +37,15 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <Button size="lg" className="group">
-                Get Started
-                <CheckCircle className="ml-2 h-4 w-4 group-hover:scale-110 transition-transform" />
-              </Button>
+              <Link href="/early-access">
+                <Button size="lg" className="group relative overflow-hidden">
+                  <span className="absolute inset-0 bg-gradient-to-r from-purple-500 to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                  <span className="relative flex items-center">
+                    Join Early Access
+                    <CheckCircle className="ml-2 h-4 w-4 group-hover:scale-110 transition-transform" />
+                  </span>
+                </Button>
+              </Link>
               <Button size="lg" variant="outline">
                 Book a Demo
                 <Calendar className="ml-2 h-4 w-4" />

@@ -55,7 +55,18 @@ export default function Nav() {
             <Button variant="outline" size="sm">
               Log In
             </Button>
-            <Button size="sm">Get Started</Button>
+            <Link href="/early-access">
+              <Button 
+                size="sm" 
+                className="bg-primary relative overflow-hidden group"
+              >
+                <span className="absolute inset-0 bg-gradient-to-r from-purple-500 to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                <span className="relative flex items-center">
+                  Early Access
+                  <span className="ml-1.5 px-1.5 py-0.5 text-xs bg-white/20 rounded-full font-medium">New</span>
+                </span>
+              </Button>
+            </Link>
           </div>
         </nav>
 
@@ -109,7 +120,15 @@ export default function Nav() {
               <Button variant="outline" size="sm">
                 Log In
               </Button>
-              <Button size="sm">Get Started</Button>
+              <Link href="/early-access" className="w-full">
+                <Button size="sm" className="w-full relative overflow-hidden group">
+                  <span className="absolute inset-0 bg-gradient-to-r from-purple-500 to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                  <span className="relative flex items-center justify-center">
+                    Early Access
+                    <span className="ml-1.5 px-1.5 py-0.5 text-xs bg-white/20 rounded-full font-medium">New</span>
+                  </span>
+                </Button>
+              </Link>
             </div>
           </nav>
         </div>
