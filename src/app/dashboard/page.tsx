@@ -1,13 +1,25 @@
+"use client";
+
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 import DashboardOverview from "./components/dashboard-overview";
 import DashboardSidebar from "./components/dashboard-sidebar";
 import UserHeader from "./components/user-header";
 
-export const metadata = {
-  title: 'Dashboard | Your Virtual Receptionist',
-  description: 'Manage your calls, leads, and appointments with Your Virtual Receptionist dashboard.',
-}
-
 export default function DashboardPage() {
+  const router = useRouter();
+  
+  useEffect(() => {
+    // Check if user has completed setup
+    // In a real app, you would check this from your backend or local storage
+    const hasCompletedSetup = localStorage.getItem("setupComplete") === "true";
+    
+    // For demo purposes, if setup is not complete, redirect to setup
+    if (!hasCompletedSetup) {
+      router.push("/dashboard/setup");
+    }
+  }, [router]);
+
   return (
     <div className="flex h-screen bg-gray-50 dark:bg-gray-900">
       <DashboardSidebar />

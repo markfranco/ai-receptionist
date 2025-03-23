@@ -79,6 +79,19 @@ export default function DashboardSidebar() {
             </Link>
           );
         })}
+        
+        {/* Setup wizard link */}
+        <Link
+          href="/dashboard/setup"
+          className="flex items-center py-3 px-4 rounded-md transition-colors hover:bg-gray-700 text-gray-300 mt-4 border border-dashed border-gray-700"
+        >
+          <div className="flex items-center space-x-4 opacity-75">
+            <div className="h-8 w-8 rounded-full flex items-center justify-center bg-gray-600">
+              <Settings className="h-5 w-5" />
+            </div>
+            <span className="font-medium">Setup Wizard</span>
+          </div>
+        </Link>
       </nav>
     </aside>
   );

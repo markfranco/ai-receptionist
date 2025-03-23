@@ -31,20 +31,20 @@ export default function LoginForm() {
     e.preventDefault();
     setIsLoading(true);
 
-    console.log("Login form submitted:", formData);
-
     // In a real application, you would validate and authenticate here
-    // For now, we'll just redirect to the dashboard after a short delay
+    // For now, we'll just redirect to the setup wizard for first-time users
+    // or to the dashboard for returning users
     try {
-      // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 1000));
       
-      // Check if dashboard page exists before redirecting
-      console.log("Redirecting to dashboard...");
-      router.push("/dashboard");
+      // For demo purposes, let's assume this is a new user that needs setup
+      // In a real app, you would check if setup has been completed for this user
+      router.push("/dashboard/setup");
+      
+      // For returning users, you would direct to the dashboard
+      // router.push("/dashboard");
     } catch (error) {
       console.error("Login failed:", error);
-    } finally {
       setIsLoading(false);
     }
   };
